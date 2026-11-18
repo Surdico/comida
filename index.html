@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elija su comida de cumpleaños</title>
+  <meta name="description" content="Elija su comida de cumpleaños: sushi, hamburguesas, pizza, shawarma, tacos y más.">
+  <meta name="theme-color" content="#F6F1E8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="pagina">
+    <h1>Mi pequeñita, elija su comida de cumpleaños <span class="corazon" aria-hidden="true">❤️</span></h1>
+    <div class="grid" id="grid" role="group" aria-label="Opciones de comida"></div>
+
+    <form class="otra" id="otra-form">
+      <label class="sr-only" for="otra-opcion">Escribe otra opción</label>
+      <input id="otra-opcion" type="text" placeholder="Otra opción…" maxlength="40" autocomplete="off" required>
+      <button type="submit">Agregar</button>
+    </form>
+
+    <div class="aviso" id="aviso" hidden>
+      <p class="aviso-texto">Avisar: <strong id="aviso-eleccion"></strong></p>
+      <div class="aviso-acciones">
+        <a class="boton boton-whatsapp" id="aviso-whatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a class="boton boton-correo" id="aviso-correo" href="#">Correo</a>
+      </div>
+    </div>
+
+    <p class="sr-only" id="estado" aria-live="polite"></p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

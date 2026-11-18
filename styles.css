@@ -1,0 +1,397 @@
+:root {
+  color-scheme: light;
+  --crema: #f6f1e8;
+  --papel: #fffdf8;
+  --tinta: #1f2a23;
+  --linea: rgba(31, 42, 35, 0.12);
+  --tomate: #d9553b;
+  --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 7vh, 88px) 20px;
+  background:
+    radial-gradient(1000px 520px at 50% -180px, #fcf7ee 0%, rgba(252, 247, 238, 0) 70%),
+    radial-gradient(800px 600px at 105% 100%, rgba(217, 85, 59, 0.05), transparent 60%),
+    var(--crema);
+  color: var(--tinta);
+  font-family: var(--sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pagina {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 clamp(26px, 4vw, 46px);
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.corazon {
+  display: inline-block;
+  margin-left: 0.12em;
+  font-size: 0.58em;
+  line-height: 1;
+  vertical-align: 0.18em;
+  transform: rotate(-5deg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.comida {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 164px;
+  padding: 20px;
+  border: 1.5px solid var(--linea);
+  border-radius: 24px;
+  background: var(--papel);
+  color: var(--tinta);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+}
+
+.comida:hover {
+  transform: translateY(-3px);
+  border-color: var(--cat);
+  box-shadow: 0 22px 36px -32px rgba(31, 42, 35, 0.55);
+}
+
+.comida:focus-visible {
+  outline: 2px solid var(--cat);
+  outline-offset: 3px;
+}
+
+.comida-emoji {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: var(--tono);
+  font-size: 31px;
+  line-height: 1;
+  transition: transform 0.25s ease, background 0.22s ease;
+}
+
+.comida:hover .comida-emoji {
+  transform: rotate(-5deg) scale(1.04);
+}
+
+.comida-nombre {
+  display: block;
+  margin-top: 26px;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.comida-check {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--cat);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.comida[aria-pressed="true"] {
+  border-color: var(--cat);
+  background: var(--tono);
+  box-shadow: 0 0 0 1px var(--cat) inset;
+}
+
+.comida[aria-pressed="true"] .comida-emoji {
+  background: rgba(255, 255, 255, 0.68);
+  transform: rotate(-4deg);
+}
+
+.comida[aria-pressed="true"] .comida-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Otra opción */
+.otra {
+  display: flex;
+  gap: 8px;
+  width: min(100%, 460px);
+  margin: 24px auto 0;
+}
+
+.otra input {
+  flex: 1;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1.5px solid var(--linea);
+  border-radius: 999px;
+  background: var(--papel);
+  color: var(--tinta);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.otra input::placeholder {
+  color: #9aa096;
+}
+
+.otra input:focus {
+  border-color: var(--tomate);
+  box-shadow: 0 0 0 4px rgba(217, 85, 59, 0.11);
+}
+
+.otra button {
+  flex: none;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--tinta);
+  color: var(--crema);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.otra button:hover {
+  background: var(--tomate);
+  transform: translateY(-1px);
+}
+
+/* Aviso de la elección */
+body.con-aviso {
+  padding-bottom: 148px;
+}
+
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 10px 12px 10px 20px;
+  border-radius: 999px;
+  background: var(--tinta);
+  color: var(--crema);
+  box-shadow: 0 24px 50px -24px rgba(31, 42, 35, 0.65);
+  transform: translateX(-50%);
+  animation: aparecer 0.24s ease both;
+}
+
+.aviso-texto {
+  margin: 0;
+  color: rgba(246, 241, 232, 0.78);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.aviso-texto strong {
+  color: var(--crema);
+  font-weight: 600;
+}
+
+.aviso-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.boton:hover {
+  transform: translateY(-1px);
+}
+
+.boton-whatsapp {
+  background: #e3f4e6;
+  color: #20613a;
+}
+
+.boton-whatsapp:hover {
+  background: #d5edda;
+}
+
+.boton-correo {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--crema);
+}
+
+.boton-correo:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    align-items: flex-start;
+    padding: 44px 16px;
+  }
+
+  h1 {
+    margin-bottom: 26px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .comida {
+    min-height: 138px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .comida-emoji {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 26px;
+  }
+
+  .comida-nombre {
+    margin-top: 20px;
+    font-size: 1.08rem;
+  }
+
+  .comida-check {
+    top: 12px;
+    right: 12px;
+    width: 25px;
+    height: 25px;
+    font-size: 0.78rem;
+  }
+
+  body.con-aviso {
+    padding-bottom: 168px;
+  }
+
+  .aviso {
+    bottom: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: calc(100% - 24px);
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  .aviso-texto {
+    font-size: 0.83rem;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .boton {
+    flex: 1;
+    padding: 11px 12px;
+  }
+
+  .otra {
+    margin-top: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
